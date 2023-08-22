@@ -88,7 +88,7 @@ double BenchmarkPublisher::tock(bool log)
   double duration_sec_f = d_nano_i / 1e9;
   if (log && node_)
   {
-    RCLCPP_INFO(node_->get_logger(), "%s time: %.4f", msg.header.frame_id, duration_sec_f);
+    RCLCPP_INFO(node_->get_logger(), "%s time: %.4f", msg.header.frame_id.c_str(), duration_sec_f);
   }
 
   return duration_sec_f;
