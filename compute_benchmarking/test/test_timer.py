@@ -1,4 +1,4 @@
-from benchmark_utils import BenchmarkPub
+from compute_benchmarking import BenchmarkPub
 import time
 
 

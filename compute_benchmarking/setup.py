@@ -1,6 +1,6 @@
 from setuptools import setup
 
-package_name = 'benchmark_utils'
+package_name = 'compute_benchmarking'
 
 setup(
     name=package_name,
@@ -15,6 +15,6 @@ setup(
     zip_safe=True,
     maintainer='David V. Lu!!',
     maintainer_email='davidvlu@gmail.com',
-    description='Utilities for publishing / processing benchmark_msgs',
+    description='Utilities for publishing / processing compute_benchmark_msgs',
     license='BSD 3-clause',
 )

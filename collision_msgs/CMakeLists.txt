@@ -5,8 +5,8 @@ find_package(ament_cmake REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 find_package(std_msgs REQUIRED)
 rosidl_generate_interfaces(${PROJECT_NAME}
-    msg/Collision.msg
-    msg/Collisions.msg
+    msg/NamedCollision.msg
+    msg/NamedCollisions.msg
   DEPENDENCIES
     std_msgs
 )

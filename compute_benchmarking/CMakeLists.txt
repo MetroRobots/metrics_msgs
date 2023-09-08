@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(benchmark_utils)
+project(compute_benchmarking)
 
 # Default to C99
 if(NOT CMAKE_C_STANDARD)
@@ -17,7 +17,7 @@ endif()
 
 find_package(ament_cmake REQUIRED)
 find_package(ament_cmake_python REQUIRED)
-find_package(benchmark_msgs REQUIRED)
+find_package(compute_benchmark_msgs REQUIRED)
 find_package(rclcpp REQUIRED)
 
 add_library(${PROJECT_NAME} src/benchmark_publisher.cpp)
@@ -26,7 +26,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
   $<INSTALL_INTERFACE:include>
 )
 ament_target_dependencies(${PROJECT_NAME}
-  benchmark_msgs
+  compute_benchmark_msgs
   rclcpp
 )
 
