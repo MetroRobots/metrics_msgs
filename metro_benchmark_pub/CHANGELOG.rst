@@ -2,8 +2,8 @@
 Changelog for package metro_benchmark_pub
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.1.1 (2023-10-02)
+------------------
 * Rename benchmark_utils -> metro_benchmark_pub (`#3 <https://github.com/Metrorobots/metrics_msgs/issues/3>`_)
 * Contributors: David V. Lu!!
 

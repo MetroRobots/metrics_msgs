@@ -2,8 +2,8 @@
 Changelog for package collision_log_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.1.1 (2023-10-02)
+------------------
 * Rename collision_msgs -> collision_log_msgs (`#3 <https://github.com/Metrorobots/metrics_msgs/issues/3>`_)
 * Contributors: David V. Lu!!
 
