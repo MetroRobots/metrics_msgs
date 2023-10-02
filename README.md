@@ -19,12 +19,12 @@ See [actual definition](compute_benchmark_msgs/msg/ComputeTime.msg) for further 
 ## compute_benchmarking
 Contains a helper class in [Python](compute_benchmarking/compute_benchmarking/__init__.py) and [C++](compute_benchmarking/include/compute_benchmarking/benchmark_publisher.hpp) for publishing `ComputeTime` messages, including support for nested computation.
 
-## collision_msgs
-Contains the [NamedCollisions](collision_msgs/msg/NamedCollisions.msg) message definition for tracking collisions between objects.
+## collision_log_msgs
+Contains the [NamedCollisions](collision_log_msgs/msg/NamedCollisions.msg) message definition for tracking collisions between objects.
 
 ```
 std_msgs/Header header
-collision_msgs/NamedCollisions[] collisions
+collision_log_msgs/NamedCollisions[] collisions
     string entity0
     string entity1
 ```
