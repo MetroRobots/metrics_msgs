@@ -34,16 +34,16 @@
 
 /* Author: David V. Lu!! */
 
-#include <compute_benchmarking/benchmark_publisher.hpp>
+#include <metro_benchmark_pub/benchmark_publisher.hpp>
 
-namespace compute_benchmarking
+namespace metro_benchmark_pub
 {
 const int NANOMOD = 1000000000;
 
 BenchmarkPublisher::BenchmarkPublisher(const rclcpp::Node::SharedPtr& node, const std::string& topic) : node_(node)
 {
   if (node_)
-    pub_ = node_->create_publisher<compute_benchmark_msgs::msg::ComputeTime>(topic, 1);
+    pub_ = node_->create_publisher<metro_benchmark_msgs::msg::ComputeTime>(topic, 1);
 }
 
 void BenchmarkPublisher::tick(const std::string& name)
@@ -70,7 +70,7 @@ double BenchmarkPublisher::tock(bool log)
   long d_nano_i = duration_nano.count();
   long s_nano_i = stop.time_since_epoch().count();
 
-  compute_benchmark_msgs::msg::ComputeTime msg;
+  metro_benchmark_msgs::msg::ComputeTime msg;
   msg.header.frame_id = cxt.name;
   msg.header.stamp.sec = s_nano_i / NANOMOD;
   msg.header.stamp.nanosec = s_nano_i % NANOMOD;
@@ -93,4 +93,4 @@ double BenchmarkPublisher::tock(bool log)
 
   return duration_sec_f;
 }
-}  // namespace compute_benchmarking
+}  // namespace metro_benchmark_pub

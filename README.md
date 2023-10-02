@@ -3,9 +3,9 @@ A collection of useful ROS interfaces for measuring ::hand-wave:: things
 
 No relation to the [ros_metrics](https://metrics.ros.org/) project.
 
-## compute_benchmark_msgs
+## metro_benchmark_msgs
 
-Contains one message at the moment, [ComputeTime](compute_benchmark_msgs/msg/ComputeTime.msg).
+Contains one message at the moment, [ComputeTime](metro_benchmark_msgs/msg/ComputeTime.msg).
 
 ```
 std_msgs/Header header
@@ -14,10 +14,10 @@ builtin_interfaces/Duration duration
 string id         # optional
 string parent_id  # optional
 ```
-See [actual definition](compute_benchmark_msgs/msg/ComputeTime.msg) for further description of the fields.
+See [actual definition](metro_benchmark_msgs/msg/ComputeTime.msg) for further description of the fields.
 
-## compute_benchmarking
-Contains a helper class in [Python](compute_benchmarking/compute_benchmarking/__init__.py) and [C++](compute_benchmarking/include/compute_benchmarking/benchmark_publisher.hpp) for publishing `ComputeTime` messages, including support for nested computation.
+## metro_benchmark_pub
+Contains a helper class in [Python](metro_benchmark_pub/metro_benchmark_pub/__init__.py) and [C++](metro_benchmark_pub/include/metro_benchmark_pub/benchmark_publisher.hpp) for publishing `ComputeTime` messages, including support for nested computation.
 
 ## collision_log_msgs
 Contains the [NamedCollisions](collision_log_msgs/msg/NamedCollisions.msg) message definition for tracking collisions between objects.

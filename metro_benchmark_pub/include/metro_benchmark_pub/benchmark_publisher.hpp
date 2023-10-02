@@ -34,21 +34,40 @@
 
 /* Author: David V. Lu!! */
 
-#include <compute_benchmarking/benchmark_publisher.hpp>
-#include <gtest/gtest.h>
+#pragma once
 
-TEST(BenchmarkPublisher, BasicDelay)
-{
-  using namespace std::chrono_literals;
-  compute_benchmarking::BenchmarkPublisher bp(nullptr, "");
-  bp.tick("");
-  std::this_thread::sleep_for(10ns);
-  double elapsed = bp.tock();
-  ASSERT_GE(elapsed, 1e-8);
-}
+#include <rclcpp/rclcpp.hpp>
+#include <metro_benchmark_msgs/msg/compute_time.hpp>
 
-int main(int argc, char** argv)
+#include <chrono>
+#include <string>
+
+namespace metro_benchmark_pub
 {
-  testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
-}
+typedef struct BenchmarkContextS
+{
+  std::string name;
+  std::string id;
+  std::chrono::high_resolution_clock::time_point start;
+
+  BenchmarkContextS(const std::string& name, const std::string& id)
+    : name(name), id(id), start(std::chrono::high_resolution_clock::now())
+  {
+  }
+} BenchmarkContext;
+
+class BenchmarkPublisher
+{
+public:
+  BenchmarkPublisher(const rclcpp::Node::SharedPtr& node, const std::string& topic);
+
+  void tick(const std::string& name);
+  double tock(bool log = true);
+
+protected:
+  std::list<BenchmarkContext> stack_;
+  std::unordered_map<std::string, int> counter_;
+  rclcpp::Node::SharedPtr node_;
+  rclcpp::Publisher<metro_benchmark_msgs::msg::ComputeTime>::SharedPtr pub_;
+};
+}  // namespace metro_benchmark_pub

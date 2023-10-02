@@ -34,40 +34,21 @@
 
 /* Author: David V. Lu!! */
 
-#pragma once
+#include <metro_benchmark_pub/benchmark_publisher.hpp>
+#include <gtest/gtest.h>
 
-#include <rclcpp/rclcpp.hpp>
-#include <compute_benchmark_msgs/msg/compute_time.hpp>
-
-#include <chrono>
-#include <string>
-
-namespace compute_benchmarking
+TEST(BenchmarkPublisher, BasicDelay)
 {
-typedef struct BenchmarkContextS
+  using namespace std::chrono_literals;
+  metro_benchmark_pub::BenchmarkPublisher bp(nullptr, "");
+  bp.tick("");
+  std::this_thread::sleep_for(10ns);
+  double elapsed = bp.tock();
+  ASSERT_GE(elapsed, 1e-8);
+}
+
+int main(int argc, char** argv)
 {
-  std::string name;
-  std::string id;
-  std::chrono::high_resolution_clock::time_point start;
-
-  BenchmarkContextS(const std::string& name, const std::string& id)
-    : name(name), id(id), start(std::chrono::high_resolution_clock::now())
-  {
-  }
-} BenchmarkContext;
-
-class BenchmarkPublisher
-{
-public:
-  BenchmarkPublisher(const rclcpp::Node::SharedPtr& node, const std::string& topic);
-
-  void tick(const std::string& name);
-  double tock(bool log = true);
-
-protected:
-  std::list<BenchmarkContext> stack_;
-  std::unordered_map<std::string, int> counter_;
-  rclcpp::Node::SharedPtr node_;
-  rclcpp::Publisher<compute_benchmark_msgs::msg::ComputeTime>::SharedPtr pub_;
-};
-}  // namespace compute_benchmarking
+  testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
+}
