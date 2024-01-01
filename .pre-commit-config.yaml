@@ -15,21 +15,21 @@ repos:
   - id: check-ast
   - id: double-quote-string-fixer
   - id: requirements-txt-fixer
-  rev: v4.4.0
+  rev: v4.5.0
 - repo: https://github.com/codespell-project/codespell
   hooks:
   - id: codespell
     args:
     - --write-changes
-  rev: v2.2.5
+  rev: v2.2.6
 - repo: https://github.com/pre-commit/mirrors-clang-format
   hooks:
   - id: clang-format
-  rev: v16.0.6
-- repo: https://github.com/pre-commit/mirrors-autopep8
+  rev: v17.0.6
+- repo: https://github.com/hhatto/autopep8
   hooks:
   - id: autopep8
-  rev: v2.0.2
+  rev: v2.0.4
 - repo: https://github.com/PyCQA/flake8
   hooks:
   - id: flake8
